@@ -8,6 +8,8 @@ const Logo = props => (
   </Container>
 );
 
+// ---------    UIComponnets    -----------
+
 export default Logo;
 
 const Container = styled.View`

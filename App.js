@@ -1,23 +1,71 @@
 import React from "react";
-import { Text } from "react-native";
+import { ScrollView, SafeAreaView } from "react-native";
 import styled from "styled-components";
-
+import Card from "./components/Card";
+import { Icon } from "expo";
+import { NotificationIcon } from "./components/Icons";
+import Logo from "./components/Logo";
 export default class App extends React.Component {
   render() {
     return (
       <Container>
-        <TitleBar>
-          <Title>Welcome back</Title>
-          <Name>Alex</Name>
-          <Avatar source={require("./assets/avatar.jpg")} />
-          <Subtitle>{"Continue Learning".toUpperCase()}</Subtitle>
-        </TitleBar>
+        <SafeAreaView>
+          <ScrollView
+            showsHorizontalScrollIndicator={false}
+            showsVerticalScrollIndicator={false}
+          >
+            <TitleBar>
+              <Avatar source={require("./assets/avatar.jpg")} />
+              <Title>Welcome back</Title>
+              <Name>Alex</Name>
+              <SideIcon>
+                <NotificationIcon />
+              </SideIcon>
+            </TitleBar>
+            <LogosScrollView
+              horizontal={true}
+              showsHorizontalScrollIndicator={true}
+              showsVerticalScrollIndicator={false}
+            >
+              <Logo
+                image={require("./assets/logo-framerx.png")}
+                text="Frame-X"
+              />
+              <Logo image={require("./assets/logo-figma.png")} text="Figma" />
+              <Logo image={require("./assets/logo-swift.png")} text="Swift" />
+            </LogosScrollView>
+            <Subtitle>{"Continue Learning".toUpperCase()}</Subtitle>
+            <ScrollView
+              horizontal={true}
+              showsHorizontalScrollIndicator={false}
+              showsVerticalScrollIndicator={false}
+              style={{ paddingBottom: 30 }}
+            >
+              <Card
+                title="Styled Components"
+                coverImage={require("./assets/background2.jpg")}
+                caption="React Native"
+                logo={require("./assets/logo-react.png")}
+                subtitle={"5 of 12 sections".toUpperCase()}
+              />
+              <Card
+                title="Styled Components 2"
+                coverImage={require("./assets/background1.jpg")}
+                caption="React Native"
+                logo={require("./assets/logo-react.png")}
+                subtitle={"5 of 12 sections".toUpperCase()}
+              />
+            </ScrollView>
+          </ScrollView>
+        </SafeAreaView>
       </Container>
     );
   }
 }
 
-// Containers
+// ---------    UIComponnets    -----------
+
+// ---------    ViewComponents  -----------
 const Container = styled.View`
   background: #f0f3f5;
   flex: 1;
@@ -26,10 +74,22 @@ const Container = styled.View`
 const TitleBar = styled.View`
   width: 100%;
   margin-top: 50px;
-  padding-left: 20px;
+  padding-left: 80px;
 `;
 
-// Labels
+const SideIcon = styled.View`
+  position: absolute;
+  right: 20;
+  top: 5;
+`;
+
+const LogosScrollView = styled.ScrollView`
+  flex-direction: row;
+  padding: 20px;
+  padding-left: 12px;
+`;
+
+// ---------    LabelsComponents  -----------
 const Title = styled.Text`
   font-size: 16px;
   color: #b8bece;
@@ -49,7 +109,7 @@ const Name = styled.Text`
   color: #3c4560;
   font-weight: bold;
 `;
-// Images
+// ---------    ImageComponents  -----------
 const Avatar = styled.Image`
   width: 44px;
   height: 44px;
