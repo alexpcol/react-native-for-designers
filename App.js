@@ -1,45 +1,38 @@
 import React from "react";
-import { createStore } from "redux";
-import { Provider } from "react-redux";
-import HomeScreen from "./screens/HomeScreen";
-import AppNavigator from "./navigator/AppNavigator";
-import ApolloClient from "apollo-boost";
-import { ApolloProvider } from "react-apollo";
+import { Text } from "react-native";
+import styled from "styled-components";
 
-const client = new ApolloClient({
-  uri: "https://graphql.contentful.com/content/v1/spaces/ldcl3ayg0mhx",
-  credentials: "same-origin",
-  headers: {
-    Authorization: `Bearer 93f3808c25c1f5bdb95476ca8576c6eaa12b5587efb956efb242ceead7cb3840`
+export default class App extends React.Component {
+  render() {
+    return (
+      <Container>
+        <TitleBar>
+          <Title>Welcome back</Title>
+          <Name>Alex</Name>
+        </TitleBar>
+      </Container>
+    );
   }
-});
+}
+const Container = styled.View`
+  background: #f0f3f5;
+  flex: 1;
+`;
 
-const initialState = {
-  action: "",
-  name: ""
-};
+const TitleBar = styled.View`
+  width: 100%;
+  margin-top: 50px;
+  padding-left: 20px;
+`;
 
-const reducer = (state = initialState, action) => {
-  switch (action.type) {
-    case "OPEN_MENU":
-      return { action: "openMenu" };
-    case "CLOSE_MENU":
-      return { action: "closeMenu" };
-    case "UPDATE_NAME":
-      return { name: action.name };
-    default:
-      return state;
-  }
-};
+const Title = styled.Text`
+  font-size: 16px;
+  color: #b8bece;
+  font-weight: 500;
+`;
 
-const store = createStore(reducer);
-
-const App = () => (
-  <ApolloProvider client={client}>
-    <Provider store={store}>
-      <AppNavigator />
-    </Provider>
-  </ApolloProvider>
-);
-
-export default App;
+const Name = styled.Text`
+  font-size: 20px;
+  color: #3c4560;
+  font-weight: bold;
+`;
