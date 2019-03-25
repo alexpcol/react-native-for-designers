@@ -32,16 +32,22 @@ const Container = styled.View`
 `;
 const Cover = styled.View`
   width: 100%;
-  height: 200px;
-  border-top-left-radius: 14px;
-  border-top-right-radius: 14px;
+  height: 100%;
+  border-radius: 14px;
   overflow: hidden;
 `;
 const Content = styled.View`
+  background: white;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
   height: 80px;
   padding-left: 20px;
   flex-direction: row;
   align-items: center;
+  border-bottom-left-radius: 14px;
+  border-bottom-right-radius: 14px;
 `;
 
 const Wrapper = styled.View`
@@ -66,7 +72,7 @@ const Title = styled.Text`
   font-weight: bold;
   margin-top: 20px;
   margin-left: 20px;
-  width: 170px;
+  width: 100%;
 `;
 
 const Caption = styled.Text`
